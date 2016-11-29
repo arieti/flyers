@@ -28,7 +28,6 @@ class FlyerRequest extends FormRequest
             'city' => 'required', 
             'zip' => 'required', 
             'country' => 'required', 
-            'state' => 'required', 
             'price' => 'required|integer', 
             'description' => 'required', 
         ];

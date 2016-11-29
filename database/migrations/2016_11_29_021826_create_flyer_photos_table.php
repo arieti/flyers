@@ -4,7 +4,7 @@ use Illuminate\Support\Facades\Schema;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Database\Migrations\Migration;
 
-class CreateFlyersPhotosTable extends Migration
+class CreateFlyerPhotosTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,7 +13,7 @@ class CreateFlyersPhotosTable extends Migration
      */
     public function up()
     {
-        Schema::create('flyers_photos', function (Blueprint $table) {
+        Schema::create('flyer_photos', function (Blueprint $table) {
             $table->increments('id');
             
             $table->integer('flyer_id')->unsigned();
@@ -32,6 +32,6 @@ class CreateFlyersPhotosTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('flyers_photos');
+        Schema::dropIfExists('flyer_photos');
     }
 }

@@ -5,6 +5,7 @@
 	<title>Flyers</title>
 	<link rel="stylesheet" type="text/css" href="/css/app.css">
 	<link rel="stylesheet" type="text/css" href="/css/libs.css">
+	<link rel="stylesheet" type="text/css" href="https://cdnjs.cloudflare.com/ajax/libs/dropzone/4.3.0/dropzone.css">
 </head>
 <body>
 	<div class="container">
@@ -26,7 +27,7 @@
 			            <li><a href="#">About</a></li>
 			            <li><a href="#">Contact</a></li>
 			        </ul>
-		        </div><!--/.nav-collapse -->
+		        </div><!--/.nav-collahttps://cdnjs.cloudflare.com/ajax/libs/dropzone/4.3.0/dropzone.csspse -->
 	        </div><!--/.container-fluid -->
        	</nav>
 		@yield('content')

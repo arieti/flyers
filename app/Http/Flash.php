@@ -15,12 +15,12 @@ class Flash
 		]);
 	}
 
-	public function message($title, $message)
+	public function info($title, $message)
 	{
 		return $this->create($title, $message, "info");
 	}
 
-	public function info($title, $message)
+	public function success($title, $message)
 	{
 		return $this->create($title, $message, "success");
 	}
