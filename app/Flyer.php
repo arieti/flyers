@@ -18,7 +18,7 @@ class Flyer extends Model
 	public static function locatedAt($zip, $street)
 	{
 		$street = str_slug($street, ' ');
-		return static::where(compact('zip', 'street'))->first();
+		return static::where(compact('zip', 'street'))->firstOrFail();
 	}
 
 	public function getPriceAttribute($price)
