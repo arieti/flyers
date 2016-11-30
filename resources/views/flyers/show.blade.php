@@ -17,7 +17,9 @@
 				<div class="row">
 					@foreach($set as $photo)
 						<div class="col-md-3">
-							<img style=" max-width: 100%; margin-bottom: 2em" src="/{{ $photo->thumbnail_path }}" alt="">
+							<a href="/{{ $photo->path }}" data-lity>
+								<img style=" max-width: 100%; margin-bottom: 2em" src="/{{ $photo->thumbnail_path }}" alt="">
+							</a>
 						</div>
 					@endforeach
 				</div>

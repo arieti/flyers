@@ -41,6 +41,11 @@ class Flyer extends Model
     	return $this->belongsTo('App\User', 'user_id');
     }
 
+    /**
+     * @param \App\User $user
+     *
+     * @return bool
+     */
     public function ownedBy(User $user)
     {
     	return $this->user_id == $user->id;
