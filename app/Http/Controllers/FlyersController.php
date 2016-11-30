@@ -7,15 +7,13 @@ use App\Photo;
 use Illuminate\Http\Request;
 use App\Http\Requests\FlyerRequest;
 use Illuminate\Support\Facades\Auth;
-use App\Http\Requests\ChangeFlyerRequest;
-use Symfony\Component\HttpFoundation\File\UploadedFile;
 
 class FlyersController extends Controller
 {
 
     public function __construct()
     {
-        $this->middleware('auth', ['except' => ['show']]);
+        $this->middleware('auth', ['except' => ['show', 'index']]);
     }
 
     /**
@@ -25,7 +23,8 @@ class FlyersController extends Controller
      */
     public function index()
     {
-        //
+        $signedIn = Auth::check();
+        return view('pages.home', compact('signedIn'));
     }
 
     /**
@@ -41,42 +40,38 @@ class FlyersController extends Controller
     /**
      * Store a newly created resource in storage.
      *
-     * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
+     * @param \App\Http\Requests\FlyerRequest $request
+     *
+     * @return \Illuminate\Http\RedirectResponse
      */
     public function store(FlyerRequest $request)
     {
-        Flyer::create($request->all());
+        $flyer = $this->user->publish(
+            new Flyer($request->all())
+        );
+
         flash()->success('Success!', 'Your flyer has been created.');
-        return redirect()->back();
+        
+        return redirect(flyer_path($flyer));
     }
 
     /**
-     * Display the specified resource.
+     * Display the specified resource
      *
-     * @param  int  $id
+     * @param $zip
+     * @param $street
+     *
      * @return \Illuminate\Http\Response
      */
     public function show($zip, $street)
     {
+        $user = auth()->user();
         $flyer = Flyer::locatedAt($zip, $street);
-        return view('flyers.show', compact('flyer'));
-    }
-
-    public function addPhoto($zip, $street, ChangeFlyerRequest $request)
-    {
-        $photo = $this->makePhoto($request->file('photo'));
-
-        Flyer::locatedAt($zip, $street)->addPhoto($photo);
-
+        return view('flyers.show', compact('flyer', 'user'));
     }
 
 
-    public function makePhoto(UploadedFile $file)
-    {
-        return Photo::named($file->getClientOriginalName())
-            ->move($file);
-    }
 
     /**
      * Show the form for editing the specified resource.
