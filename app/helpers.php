@@ -18,3 +18,4 @@ function flyer_path(Flyer $flyer)
 {
 	return $flyer->zip . '/' . str_slug($flyer->street, '-');
 }
+
