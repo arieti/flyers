@@ -13,4 +13,16 @@
 	        <a href="/register" class="btn btn-primary">Sign Up</a>
         @endif
 	</div>
+	@if($signedIn)
+		<h2>All flyers</h2>
+		<div class="flyers" 
+		     style="display: flex; justify-content: space-around; flex-wrap:wrap">
+			@foreach($flyers as $flyer)
+				<div class="flyer" style="margin: 0 10px">
+					<h2><a href="{{ url(flyer_path($flyer)) }}">{{ $flyer->street }}</a></h2>
+					<img src="{{ $flyer->mainImage->thumbnail_path }}">
+				</div>
+			@endforeach
+		</div>
+    @endif
 @stop

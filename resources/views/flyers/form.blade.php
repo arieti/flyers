@@ -5,6 +5,11 @@
             {{ csrf_field() }}
 
             <div class="form-group">
+                <label for="user_id">User Id:</label>
+                <input type="text" name="user_id" class="form-control" value="{{ getUserId() }}" readonly="readonly">
+            </div>
+
+            <div class="form-group">
                 <label for="street">Street:</label>
                 <input type="street" name="street" id="street" class="form-control" value="{{ old('street') }}">
             </div>
@@ -13,6 +18,8 @@
                 <label for="city">City:</label>
                 <input type="city" name="city" id="city" class="form-control">
             </div>
+
+            
 
             <div class="form-group">
                 <label for="zip">Zip/Postal Code:</label>

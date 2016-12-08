@@ -24,7 +24,8 @@ class FlyersController extends Controller
     public function index()
     {
         $signedIn = Auth::check();
-        return view('pages.home', compact('signedIn'));
+        $flyers = Flyer::all();
+        return view('pages.home', compact('signedIn', 'flyers'));
     }
 
     /**
@@ -47,11 +48,9 @@ class FlyersController extends Controller
      */
     public function store(FlyerRequest $request)
     {
-        $flyer = $this->user->publish(
-            new Flyer($request->all())
-        );
+        $flyer = Flyer::create($request->all());
 
-        flash()->success('Success!', 'Your flyer has been created.');
+        flash()->overlay('Success!', 'Your flyer has been created.');
         
         return redirect(flyer_path($flyer));
     }

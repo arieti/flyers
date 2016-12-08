@@ -7,6 +7,7 @@ use Illuminate\Database\Eloquent\Model;
 class Flyer extends Model
 {
 	protected $fillable = [
+        'user_id',
 		'street',
 		'city',
 		'zip',
@@ -29,6 +30,11 @@ class Flyer extends Model
     public function photos()
     {
     	return $this->hasMany('App\Photo');
+    }
+
+    public function mainImage()
+    {
+    	return $this->hasOne('App\Photo');
     }
 
     public function addPhoto(Photo $photo)

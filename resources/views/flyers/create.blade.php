@@ -3,7 +3,7 @@
 @section('content')
 	<h2>Selling your home?</h2>
 	<hr>
-	<form method="POST" action="/flyers" enctype="multipart/form-data">
+	<form method="POST" action="/flyers">
 		@include('flyers.form')
 			@if(count($errors) > 0)
 		        <div class="alert alert-danger">
